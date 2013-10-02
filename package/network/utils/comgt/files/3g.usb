@@ -2,6 +2,8 @@
 . /lib/functions.sh
 . /lib/netifd/netifd-proto.sh
 
+DEVICENAME=$DEVNAME
+
 find_3g_iface() {
 	local cfg="$1"
 	local tty="$2"
