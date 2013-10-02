@@ -18,7 +18,6 @@
 						],
 						[
 							[ "makedev", "/dev/%DEVNAME%", "0666" ],
-							[ "return" ],
 						]
 					],
 					[ "if",
