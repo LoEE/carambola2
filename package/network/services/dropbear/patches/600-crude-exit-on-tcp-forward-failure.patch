@@ -1,0 +1,19 @@
+--- a/cli-tcpfwd.c
++++ b/cli-tcpfwd.c
+@@ -79,6 +79,7 @@ void setup_localtcp() {
+ 					fwd->listenport,
+ 					fwd->connectaddr,
+ 					fwd->connectport);
++			dropbear_close("Local TCP forward request failure");
+ 		}		
+ 	}
+ 	TRACE(("leave setup_localtcp"))
+@@ -180,6 +181,7 @@ void cli_recv_msg_request_failure() {
+ 		if (!fwd->have_reply) {
+ 			fwd->have_reply = 1;
+-			dropbear_log(LOG_WARNING, "Remote TCP forward request failed (port %d -> %s:%d)", fwd->listenport, fwd->connectaddr, fwd->connectport);
++			dropbear_log(LOG_WARNING, "Remote TCP forward request failed (port %d -> %s:%d), exiting", fwd->listenport, fwd->connectaddr, fwd->connectport);
++			dropbear_close("Remote TCP forward request failure");
+ 			return;
+ 		}
+ 	}
